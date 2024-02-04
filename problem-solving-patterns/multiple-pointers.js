@@ -28,3 +28,32 @@ function sumZero(arr) {
 const sumZero1 = sumZero([-3, -2, -1, 0, 1, 2, 3]); // [-3, 3]
 const sumZero2 = sumZero([-2, 0, 1, 3]); // undefined
 const sumZero3 = sumZero([1, 2, 3]); // undefined
+
+// This function counts the number of unique values in a sorted array
+function countUniqueValues(arr) {
+  // If the array is empty, return 0
+  if (arr.length === 0) return 0;
+
+  // Initialize a pointer at the start of the array
+  let i = 0;
+
+  // Loop through the array
+  for (let j = 1; j < arr.length; j++) {
+    // If the value at the pointer is not equal to the value at the current index
+    if (arr[i] !== arr[j]) {
+      // Move the pointer up
+      i++;
+      // Set the value at the pointer to the value at the current index
+      arr[i] = arr[j];
+    }
+  }
+
+  // Return the number of unique values
+  return i + 1;
+}
+
+const countUniqueValues1 = countUniqueValues([1, 1, 1, 1, 1, 2]); // 2
+const countUniqueValues2 = countUniqueValues([
+  1, 2, 3, 4, 4, 4, 7, 7, 12, 12, 13,
+]); // 7
+const countUniqueValues3 = countUniqueValues([]); // 0
