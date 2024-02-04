@@ -33,3 +33,32 @@ function isSquaredSameFrequency(arr1, arr2) {
 const isSame1 = isSquaredSameFrequency([1, 2, 3], [4, 1, 9]); // true
 const isSame2 = isSquaredSameFrequency([1, 2, 3], [1, 9]); // false
 const isSame3 = isSquaredSameFrequency([1, 2, 1], [4, 4, 1]); // false
+
+// An anagram is a word, phrase, or name formed by rearranging the letters of another, such as cinema, formed from iceman.
+function isValidAnagram(str1, str2) {
+  // If the lengths of the strings are not equal, return false
+  if (str1.length !== str2.length) return false;
+
+  // Initialize an object to store the frequency of characters in str1
+  let frequencyCounter = {};
+
+  // Loop through str1 and count the frequency of each character
+  for (let char of str1) {
+    frequencyCounter[char] = (frequencyCounter[char] || 0) + 1;
+  }
+
+  // Loop through str2 and check if the frequency of each character is the same as the frequency of characters in str1
+  for (let char of str2) {
+    // If the character is not in frequencyCounter or the frequency of the character is 0, return false
+    if (!frequencyCounter[char]) return false;
+    // If the character is in frequencyCounter, decrement the frequency of the character
+    frequencyCounter[char] -= 1;
+  }
+
+  // If all checks pass, return true
+  return true;
+}
+
+const isValidAnagram1 = isValidAnagram("", ""); // true
+const isValidAnagram2 = isValidAnagram("aaz", "zza"); // false
+const isValidAnagram3 = isValidAnagram("anagram", "nagaram"); // true
