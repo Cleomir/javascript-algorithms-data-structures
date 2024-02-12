@@ -300,3 +300,5 @@ class DoublyLinkedList {
     return this.toArrayReverse().join(" ");
   }
 }
+
+module.exports = DoublyLinkedList;
